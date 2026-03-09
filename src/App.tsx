@@ -18,9 +18,9 @@ import {
 import { format, differenceInDays, differenceInHours, differenceInMinutes, differenceInSeconds } from 'date-fns';
 import { cn } from './lib/utils';
 const galleryImages = [
-  '/image/4B7A4959.jpg',
-  '/image/4B7A5275.jpg',
-  '/image/4B7A7320.jpg'
+  'image/4B7A4959.jpg',
+  'image/4B7A5275.jpg',
+  'image/4B7A7320.jpg'
 ];
 
 // --- Constants ---
