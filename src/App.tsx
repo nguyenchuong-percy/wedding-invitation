@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   Heart, 
@@ -16,22 +17,30 @@ import {
 } from 'lucide-react';
 import { format, differenceInDays, differenceInHours, differenceInMinutes, differenceInSeconds } from 'date-fns';
 import { cn } from './lib/utils';
+const galleryImages = [
+  '/image/4B7A4959.jpg',
+  '/image/4B7A5498.jpg',
+  '/image/4B7A5643.jpg',
+  '/image/4B7A5275.jpg',
+  '/image/4B7A5696.jpg',
+  '/image/4B7A7320.jpg'
+];
 
 // --- Constants ---
-const WEDDING_DATE = new Date('2026-06-20T14:00:00');
-const COUPLE_NAMES = { groom: 'Alexander', bride: 'Sophia' };
+const WEDDING_DATE = new Date('2026-03-30T00:00:00');
+const COUPLE_NAMES = { groom: 'Nguyên Chương', bride: 'Mỹ Duyên' };
 const LOCATION = {
   ceremony: {
-    name: 'St. Mary\'s Cathedral',
-    address: '123 Grace Avenue, Garden City, NY',
-    time: '2:00 PM',
-    mapUrl: 'https://maps.google.com/maps?q=123%20Grace%20Avenue,%20Garden%20City,%20NY&t=&z=15&ie=UTF8&iwloc=&output=embed'
+    name: 'Tư gia',
+    address: '103/8 Tân Hòa Đông, Phường Phú Lâm, Thành phố Hồ Chí Minh',
+    time: '9:00 AM',
+    mapUrl: 'https://maps.google.com/maps?q=10.755394971806483,106.63533921239767&z=15&output=embed'
   },
   reception: {
-    name: 'The Grand Ballroom',
-    address: '456 Celebration Way, Garden City, NY',
+    name: 'Riverside Palace - Wedding & Convention',
+    address: '360D Bến Vân Đồn, Phường Vĩnh Hội, Thành phố Hồ Chí Minh',
     time: '6:00 PM',
-    mapUrl: 'https://maps.google.com/maps?q=456%20Celebration%20Way,%20Garden%20City,%20NY&t=&z=15&ie=UTF8&iwloc=&output=embed'
+    mapUrl: 'https://maps.google.com/maps?q=Riverside%20Palace%20Ho%20Chi%20Minh&z=16&output=embed'
   }
 };
 
@@ -205,10 +214,10 @@ export default function App() {
   }, []);
 
   const navItems = [
-    { label: 'Our Story', href: '#story' },
-    { label: 'Details', href: '#details' },
-    { label: 'Gallery', href: '#gallery' },
-    { label: 'RSVP', href: '#rsvp' }
+    // { label: 'Our Story', href: '#story' },
+    { label: 'Chi tiết', href: '#details' },
+    { label: 'Thư viện ảnh', href: '#gallery' },
+    { label: 'Lời cảm ơn', href: '#rsvp' }
   ];
 
   return (
@@ -220,7 +229,7 @@ export default function App() {
       )}>
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <a href="#" className="text-2xl font-serif text-stone-900 tracking-tighter">
-            S <span className="text-gold-500">&</span> A
+            C <span className="text-gold-500">&</span> D
           </a>
           
           {/* Desktop Nav */}
@@ -234,12 +243,12 @@ export default function App() {
                 {item.label}
               </a>
             ))}
-            <a 
+            {/* <a 
               href="#rsvp" 
               className="bg-stone-900 text-white px-6 py-2.5 rounded-full text-xs uppercase tracking-widest hover:bg-gold-600 transition-all"
             >
-              RSVP
-            </a>
+              Lời cảm ơn
+            </a> */}
           </div>
 
           {/* Mobile Toggle */}
@@ -288,9 +297,12 @@ export default function App() {
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=2000" 
+            src="/image/4B7A5579.jpg" 
             alt="Wedding Background" 
             className="w-full h-full object-cover opacity-40"
+            style={{
+            backgroundPosition: "center 40%"
+          }}
             referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-gold-50/50 via-transparent to-gold-50"></div>
@@ -306,9 +318,9 @@ export default function App() {
               Save The Date
             </p>
             <h1 className="text-6xl md:text-9xl font-serif text-stone-900 mb-8 leading-tight">
-              {COUPLE_NAMES.groom} <br className="md:hidden" />
-              <span className="text-gold-500 italic md:mx-4">&</span> <br className="md:hidden" />
-              {COUPLE_NAMES.bride}
+              <span className="block">{COUPLE_NAMES.groom}</span>
+              <span className="text-gold-500 italic md:mx-4 block">&</span>
+              <span className="block">{COUPLE_NAMES.bride}</span>
             </h1>
             <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-12 text-stone-600 mb-12">
               <div className="flex items-center gap-2">
@@ -318,7 +330,7 @@ export default function App() {
               <div className="hidden md:block w-1 h-1 bg-gold-300 rounded-full"></div>
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-gold-500" />
-                <span className="text-sm tracking-widest uppercase">Garden City, New York</span>
+                <span className="text-sm tracking-widest uppercase">Ho Chi Minh City, Vietnam</span>
               </div>
             </div>
             <motion.div
@@ -339,62 +351,12 @@ export default function App() {
         </div>
       </section>
 
-      {/* Our Story Section */}
-      <section id="story" className="py-24 px-6">
-        <div className="max-w-5xl mx-auto">
-          <SectionHeading 
-            title="Our Story" 
-            subtitle="A journey of love that began with a simple hello and grew into a lifetime of promises."
-          />
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="relative"
-            >
-              <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
-                <img 
-                  src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=1000" 
-                  alt="The Couple" 
-                  className="w-full h-full object-cover"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-              <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-gold-200 rounded-3xl -z-10"></div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="space-y-6"
-            >
-              <h3 className="text-3xl font-serif text-stone-900">How We Met</h3>
-              <p className="text-stone-600 leading-relaxed">
-                It was a rainy Tuesday in October when our paths first crossed at a small bookstore in the heart of the city. Alexander was looking for a rare edition of poetry, and Sophia happened to be reaching for the very same book.
-              </p>
-              <p className="text-stone-600 leading-relaxed">
-                What started as a polite conversation about literature turned into a three-hour coffee date, and we both knew that afternoon that something special had begun.
-              </p>
-              <div className="pt-4">
-                <div className="flex items-center gap-4 text-gold-600">
-                  <Heart className="w-5 h-5 fill-gold-600/10" />
-                  <span className="font-serif italic text-xl">"I have found the one whom my soul loves."</span>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
       {/* Details Section */}
       <section id="details" className="py-24 px-6 bg-gold-100/30">
         <div className="max-w-6xl mx-auto">
           <SectionHeading 
-            title="Wedding Details" 
-            subtitle="We can't wait to celebrate our special day with you. Here's everything you need to know."
+            title="Chi tiết lễ cưới" 
+            subtitle="Thông tin về thời gian và địa điểm tổ chức lễ cưới của chúng tôi 💍"
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -408,7 +370,7 @@ export default function App() {
               <div className="w-16 h-16 bg-gold-50 rounded-full flex items-center justify-center mx-auto">
                 <Heart className="text-gold-500 w-8 h-8" />
               </div>
-              <h3 className="text-3xl font-serif">The Ceremony</h3>
+              <h3 className="text-3xl font-serif">Lễ gia tiên</h3>
               <div className="space-y-2 text-stone-600 flex-grow">
                 <p className="font-semibold text-stone-900">{LOCATION.ceremony.name}</p>
                 <p>{LOCATION.ceremony.address}</p>
@@ -441,7 +403,7 @@ export default function App() {
               <div className="w-16 h-16 bg-gold-50 rounded-full flex items-center justify-center mx-auto">
                 <Music className="text-gold-500 w-8 h-8" />
               </div>
-              <h3 className="text-3xl font-serif">The Reception</h3>
+              <h3 className="text-3xl font-serif">Tiệc cưới</h3>
               <div className="space-y-2 text-stone-600 flex-grow">
                 <p className="font-semibold text-stone-900">{LOCATION.reception.name}</p>
                 <p>{LOCATION.reception.address}</p>
@@ -470,19 +432,12 @@ export default function App() {
       <section id="gallery" className="py-24 px-6">
         <div className="max-w-7xl mx-auto">
           <SectionHeading 
-            title="Our Gallery" 
-            subtitle="Capturing the moments that led us to this day."
+            title="Thư viện ảnh" 
+            subtitle="Lưu giữ những khoảnh khắc đáng nhớ nhất."
           />
 
           <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
-            {[
-              'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&q=80&w=800',
-              'https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&q=80&w=800',
-              'https://images.unsplash.com/photo-1522673607200-1648832cee98?auto=format&fit=crop&q=80&w=800',
-              'https://images.unsplash.com/photo-1465495910483-0d6749ee997f?auto=format&fit=crop&q=80&w=800',
-              'https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=800',
-              'https://images.unsplash.com/photo-1510076857177-7470076d4098?auto=format&fit=crop&q=80&w=800'
-            ].map((url, i) => (
+            {galleryImages.map((url, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -510,10 +465,11 @@ export default function App() {
       <section id="rsvp" className="py-24 px-6 bg-gold-50">
         <div className="max-w-4xl mx-auto">
           <SectionHeading 
-            title="RSVP" 
-            subtitle="Please kindly respond by May 20, 2026. We look forward to celebrating with you!"
+            title="Lời cảm ơn" 
+            subtitle="Chân thành cảm ơn sự hiện diện và những lời chúc tốt đẹp của Quý khách, chúng tôi rất hân hạnh được đón tiếp Quý khách trong ngày vui của chúng tôi."
+            
           />
-          <RSVPForm />
+          {/* <RSVPForm /> */}
         </div>
       </section>
 
@@ -523,16 +479,16 @@ export default function App() {
           <div className="text-4xl font-serif italic">
             {COUPLE_NAMES.groom} <span className="text-gold-500">&</span> {COUPLE_NAMES.bride}
           </div>
-          <div className="flex justify-center gap-6">
+          {/* <div className="flex justify-center gap-6">
             <a href="#" className="hover:text-gold-400 transition-colors"><Instagram /></a>
             <a href="#" className="hover:text-gold-400 transition-colors"><Facebook /></a>
             <a href="#" className="hover:text-gold-400 transition-colors"><Mail /></a>
-          </div>
+          </div> */}
           <p className="text-stone-500 text-xs uppercase tracking-widest">
             Made with love for our special day
           </p>
           <div className="pt-8 border-t border-stone-800 text-stone-600 text-[10px] uppercase tracking-[0.3em]">
-            © 2026 Alexander & Sophia. All Rights Reserved.
+            {/* © 2026 NguyenChuong & MyDuyen. All Rights Reserved. */}
           </div>
         </div>
       </footer>
