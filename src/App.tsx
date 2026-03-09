@@ -278,13 +278,13 @@ export default function App() {
                   {item.label}
                 </a>
               ))}
-              <a 
+              {/* <a 
                 href="#rsvp" 
                 onClick={() => setMobileMenuOpen(false)}
                 className="bg-stone-900 text-white py-4 rounded-full text-sm uppercase tracking-widest"
               >
                 RSVP Now
-              </a>
+              </a> */}
             </div>
           </motion.div>
         )}
@@ -474,7 +474,11 @@ export default function App() {
       <footer className="py-16 px-6 bg-stone-900 text-white text-center">
         <div className="max-w-4xl mx-auto space-y-8">
           <div className="text-4xl font-serif italic">
-            {COUPLE_NAMES.groom} <span className="text-gold-500">&</span> {COUPLE_NAMES.bride}
+            {COUPLE_NAMES.groom}
+            <br />
+            <span className="text-gold-500">&</span>
+            <br />
+            {COUPLE_NAMES.bride}
           </div>
           {/* <div className="flex justify-center gap-6">
             <a href="#" className="hover:text-gold-400 transition-colors"><Instagram /></a>
