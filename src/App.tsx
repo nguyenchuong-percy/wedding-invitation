@@ -19,10 +19,7 @@ import { format, differenceInDays, differenceInHours, differenceInMinutes, diffe
 import { cn } from './lib/utils';
 const galleryImages = [
   '/image/4B7A4959.jpg',
-  '/image/4B7A5498.jpg',
-  '/image/4B7A5643.jpg',
   '/image/4B7A5275.jpg',
-  '/image/4B7A5696.jpg',
   '/image/4B7A7320.jpg'
 ];
 
