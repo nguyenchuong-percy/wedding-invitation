@@ -29,13 +29,13 @@ const COUPLE_NAMES = { groom: 'Nguyên Chương', bride: 'Mỹ Duyên' };
 const LOCATION = {
   ceremony: {
     name: 'Tư gia',
-    address: '103/8 Tân Hòa Đông, Phường Phú Lâm, Thành phố Hồ Chí Minh',
+    address: '103/8 Tân Hòa Đông, Phường Phú Lâm,\nThành phố Hồ Chí Minh',
     time: '9:00 AM',
     mapUrl: 'https://maps.google.com/maps?q=10.755394971806483,106.63533921239767&z=15&output=embed'
   },
   reception: {
     name: 'Riverside Palace - Wedding & Convention',
-    address: '360D Bến Vân Đồn, Phường Vĩnh Hội, Thành phố Hồ Chí Minh',
+    address: '360D Bến Vân Đồn, Phường Vĩnh Hội,\nThành phố Hồ Chí Minh',
     time: '6:00 PM',
     mapUrl: 'https://maps.google.com/maps?q=Riverside%20Palace%20Ho%20Chi%20Minh&z=16&output=embed'
   }
@@ -370,7 +370,9 @@ export default function App() {
               <h3 className="text-3xl font-serif">Lễ gia tiên</h3>
               <div className="space-y-2 text-stone-600 flex-grow">
                 <p className="font-semibold text-stone-900">{LOCATION.ceremony.name}</p>
-                <p>{LOCATION.ceremony.address}</p>
+                <p className="whitespace-pre-line text-center leading-relaxed text-gray-700">
+                  {LOCATION.ceremony.address}
+                </p>
                 <div className="flex items-center justify-center gap-2 pt-4">
                   <Clock className="w-4 h-4 text-gold-500" />
                   <span className="uppercase tracking-widest text-xs font-bold">{LOCATION.ceremony.time}</span>
