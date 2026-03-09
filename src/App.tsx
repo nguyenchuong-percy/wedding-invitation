@@ -405,7 +405,9 @@ export default function App() {
               <h3 className="text-3xl font-serif">Tiệc cưới</h3>
               <div className="space-y-2 text-stone-600 flex-grow">
                 <p className="font-semibold text-stone-900">{LOCATION.reception.name}</p>
-                <p>{LOCATION.reception.address}</p>
+                <p className="whitespace-pre-line text-center">
+                  {LOCATION.reception.address}
+                </p>
                 <div className="flex items-center justify-center gap-2 pt-4">
                   <Clock className="w-4 h-4 text-gold-500" />
                   <span className="uppercase tracking-widest text-xs font-bold">{LOCATION.reception.time}</span>
