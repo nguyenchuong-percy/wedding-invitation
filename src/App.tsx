@@ -294,7 +294,7 @@ export default function App() {
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="/image/4B7A5579.jpg" 
+            src="image/4B7A5579.jpg" 
             alt="Wedding Background" 
             className="w-full h-full object-cover opacity-40"
             style={{
